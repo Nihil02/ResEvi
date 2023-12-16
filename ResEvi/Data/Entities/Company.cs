@@ -13,5 +13,7 @@ namespace ResEvi.Data.Entities
         public string City { get; set; }
         public string Country { get; set; }
         public IList<Contact> Contacts { get; set; }
+        public IList<Advisor> Advisors { get; set; }
+        public IList<Project> Projects { get; set; }
     }
 }

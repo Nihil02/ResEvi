@@ -4,7 +4,7 @@ namespace ResEvi.Data.Entities
 {
     internal sealed class Record
     {
-        public long Id { get; set; }
+        public long Id { get; set; } // Control number
         public string Name { get; set; }
         public string Email { get; set; }
         public string Major { get; set; }
@@ -17,6 +17,9 @@ namespace ResEvi.Data.Entities
         public Advisor Reviewer { get; set; }
         public Advisor InternalAdvisor { get; set; }
         public Advisor ExternalAdvisor { get; set; }
+        public long ReviewerId { get; set; }
+        public long InternalAdvisorId { get; set; }
+        public long ExternalAdvisorId { get; set; }
         public DateTime RegisterDate { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
