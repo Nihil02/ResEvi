@@ -14,9 +14,9 @@ namespace ResEvi.Data.Entities
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string dataSource = "Data Source=" + App.appFolder + "\\residencias.db";
+            Directory.CreateDirectory(App.LocalDataDirectory);
+            string dataSource = "Data Source=" + App.DatabaseFilePath;
             optionsBuilder.UseSqlite(dataSource);
-            //optionsBuilder.UseLazyLoadingProxies();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
