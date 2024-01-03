@@ -62,7 +62,7 @@ namespace Tests.Data
             context.SaveChanges();
 
             // Act
-            dao.Delete(1);
+            await dao.Delete(1);
 
             // Assert
             _ = Assert.ThrowsAsync<EntityNotFoundException>(() => dao.Get(1));

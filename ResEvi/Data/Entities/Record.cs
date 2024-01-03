@@ -1,8 +1,9 @@
 ﻿using System;
+using ResEvi.Contracts;
 
 namespace ResEvi.Data.Entities
 {
-    internal sealed class Record
+    internal sealed class Record : IEntity
     {
         public long Id { get; set; } // Control number
         public string Name { get; set; }
