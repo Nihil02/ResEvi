@@ -1,11 +1,21 @@
 using Microsoft.EntityFrameworkCore;
-using System;
+using ResEvi.Contracts;
+using ResEvi.Data.Entities;
 using System.IO;
+using System.Threading.Tasks;
 
-namespace ResEvi.Data.Entities
+namespace ResEvi.Data
 {
-    internal sealed class AppDbContext: DbContext 
+    internal sealed class AppDbContext: DbContext
     {
+        public AppDbContext() : base()
+        {
+
+        }
+        public AppDbContext(DbContextOptions options) : base(options)
+        {
+        }
+
         public DbSet<Advisor> Advisors {get; set;}
         public DbSet<Company> Companies {get; set;}
         public DbSet<Contact> Contacts {get; set;}
@@ -14,9 +24,12 @@ namespace ResEvi.Data.Entities
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            Directory.CreateDirectory(App.LocalDataDirectory);
-            string dataSource = "Data Source=" + App.DatabaseFilePath;
-            optionsBuilder.UseSqlite(dataSource);
+            if(!optionsBuilder.IsConfigured)
+            {
+                Directory.CreateDirectory(App.LocalDataDirectory);
+                string dataSource = "Data Source=" + App.DatabaseFilePath;
+                optionsBuilder.UseSqlite(dataSource);
+            } 
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

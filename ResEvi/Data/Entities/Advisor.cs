@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("Tests")]
 
 namespace ResEvi.Data.Entities
 {

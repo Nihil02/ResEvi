@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using ResEvi.Data;
+using System;
 using System.IO;
 using System.Windows;
 
@@ -27,6 +29,17 @@ namespace ResEvi
 
                 return _localDataDirectory;
             }
+        }
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            var services = new ServiceCollection();
+            ConfigureServices(services);
+        }
+
+        private void ConfigureServices(ServiceCollection services)
+        {
+            services.AddDbContext<AppDbContext>();
         }
     }
 }

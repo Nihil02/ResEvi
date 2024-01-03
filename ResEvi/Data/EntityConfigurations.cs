@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ResEvi.Data.Entities;
 
-namespace ResEvi.Data.Entities
+namespace ResEvi.Data
 {
     internal sealed class AdvisorEntityTypeConfiguration: IEntityTypeConfiguration<Advisor>
     {
