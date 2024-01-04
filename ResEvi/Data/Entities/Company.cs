@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using ResEvi.Contracts;
 
 namespace ResEvi.Data.Entities
 {
-    internal sealed class Company
+    internal sealed class Company : IEntity
     {
         public long Id { get; set; }
         public string Name { get; set; }

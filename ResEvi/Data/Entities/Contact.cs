@@ -1,6 +1,8 @@
-﻿namespace ResEvi.Data.Entities
+﻿using ResEvi.Contracts;
+
+namespace ResEvi.Data.Entities
 {
-    internal sealed class Contact
+    internal sealed class Contact : IEntity
     {
         public long Id { get; set; }
         public long CompanyId { get; set; }

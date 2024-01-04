@@ -1,8 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using ResEvi.Contracts;
+
+[assembly: InternalsVisibleTo("Tests")]
 
 namespace ResEvi.Data.Entities
 {
-    internal sealed class Advisor
+    internal sealed class Advisor : IEntity
     {
         public long Id { get; set; }
         public long CompanyId { get; set; }
