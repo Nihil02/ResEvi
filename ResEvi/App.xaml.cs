@@ -11,23 +11,23 @@ namespace ResEvi
     /// </summary>
     public partial class App : Application
     {
-        private static string? _localDataDirectory = null;
+        private static string? m_dataDirectory = null;
 
         public static string AppName => "ResEvi";
 
-        public static string DatabaseFilePath => Path.Combine(LocalDataDirectory, "database.db");
+        public static string DatabaseFilePath => Path.Combine(DataDirectory, "database.db");
 
-        public static string LocalDataDirectory
+        public static string DataDirectory
         {
             get
             {
-                if (_localDataDirectory == null)
+                if (m_dataDirectory == null)
                 {
                     string dir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-                    _localDataDirectory = Path.Combine(dir, AppName);
+                    m_dataDirectory = Path.Combine(dir, AppName);
                 }
 
-                return _localDataDirectory;
+                return m_dataDirectory;
             }
         }
         protected override void OnStartup(StartupEventArgs e)

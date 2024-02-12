@@ -26,7 +26,7 @@ namespace ResEvi.Data
         {
             if(!optionsBuilder.IsConfigured)
             {
-                Directory.CreateDirectory(App.LocalDataDirectory);
+                Directory.CreateDirectory(App.DataDirectory);
                 string dataSource = "Data Source=" + App.DatabaseFilePath;
                 optionsBuilder.UseSqlite(dataSource);
             } 
