@@ -24,21 +24,22 @@ namespace ResEvi.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if(!optionsBuilder.IsConfigured)
+            if (!optionsBuilder.IsConfigured)
             {
                 Directory.CreateDirectory(App.DataDirectory);
-                string dataSource = "Data Source=" + App.DatabaseFilePath;
-                optionsBuilder.UseSqlite(dataSource);
+                var builder = new SqliteConnectionStringBuilder
+                {
+                    DataSource = App.DatabaseFilePath,
+                    ForeignKeys = true,
+                };
+
+                optionsBuilder.UseSqlite(builder.ConnectionString);
             } 
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            new AdvisorEntityTypeConfiguration().Configure(modelBuilder.Entity<Advisor>());
-            new CompanyEntityTypeConfiguration().Configure(modelBuilder.Entity<Company>());
-            new ContactEntityTypeConfiguration().Configure(modelBuilder.Entity<Contact>());
-            new ProjectEntityTypeConfiguration().Configure(modelBuilder.Entity<Project>());
-            new RecordEntityTypeConfiguration().Configure(modelBuilder.Entity<Record>());
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(App).Assembly);
         }
 
     }
