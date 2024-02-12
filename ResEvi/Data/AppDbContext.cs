@@ -1,8 +1,7 @@
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using ResEvi.Contracts;
 using ResEvi.Data.Entities;
 using System.IO;
-using System.Threading.Tasks;
 
 namespace ResEvi.Data
 {
@@ -10,16 +9,20 @@ namespace ResEvi.Data
     {
         public AppDbContext() : base()
         {
-
         }
+
         public AppDbContext(DbContextOptions options) : base(options)
         {
         }
 
         public DbSet<Advisor> Advisors {get; set;}
+
         public DbSet<Company> Companies {get; set;}
+
         public DbSet<Contact> Contacts {get; set;}
+
         public DbSet<Project> Projects {get; set;}
+
         public DbSet<Record> Records {get; set;}
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -41,6 +44,5 @@ namespace ResEvi.Data
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(App).Assembly);
         }
-
     }
 }

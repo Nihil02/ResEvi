@@ -1,12 +1,15 @@
 using System.Threading.Tasks;
 
-namespace ResEvi.Contracts 
+namespace ResEvi.Contracts
 {
-    internal interface IDAO<T> 
+    internal interface IDAO<T>
     {
-        public Task<T> Get(long id);
-        public Task<T> Save(T entity);
-        public Task<T> Update(T entity);
-        public Task Delete(long id);
+        Task<T> Get(long id);
+
+        Task<T> Save(T entity);
+
+        Task<T> Update(T entity);
+
+        Task Delete(long id);
     }
 }

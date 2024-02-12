@@ -128,29 +128,26 @@ namespace ResEvi.Data
             builder.Property(record => record.HasPreProject).IsRequired();
             builder.Property(record => record.IsRecordClosed).IsRequired();
             builder.Property(record => record.Observations);
-            
+
             // Relationships
 
             // Dossier - Record
             builder.HasOne(record => record.Project)
                    .WithOne(project => project.Record)
                    .HasForeignKey<Project>(project => project.RecordId);
-            
+
             // Dossier - Advisor
             builder.HasOne(record => record.Reviewer)
                    .WithMany(advisor => advisor.ReviewerRecords)
                    .HasForeignKey(record => record.ReviewerId);
-            
+
             builder.HasOne(record => record.InternalAdvisor)
                    .WithMany(advisor => advisor.InternalAdvisorRecords)
                    .HasForeignKey(record => record.InternalAdvisorId);
-            
+
             builder.HasOne(record => record.ExternalAdvisor)
                    .WithMany(advisor => advisor.ExternalAdvisorRecords)
                    .HasForeignKey(record => record.ExternalAdvisorId);
         }
     }
-
-
 }
-

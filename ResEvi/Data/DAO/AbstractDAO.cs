@@ -10,11 +10,12 @@ namespace ResEvi.Data.DAO
     internal abstract class AbstractDAO<T> : IDAO<T> where T : class, IEntity
     {
         private readonly AppDbContext _context;
+
         protected AbstractDAO(AppDbContext context)
         {
             _context = context;
         }
-        
+
         protected string GetName()
         {
             return typeof(T).Name;
@@ -26,10 +27,10 @@ namespace ResEvi.Data.DAO
             {
                 throw new Exception("Invalid ID: " + id);
             }
+
             var entity = await _context.Set<T>().FindAsync(id) ?? throw new EntityNotFoundException(GetName() + " not found");
             _context.Set<T>().Remove(entity);
             await _context.SaveChangesAsync();
-
         }
 
         public async Task<T> Get(long id)
@@ -56,6 +57,7 @@ namespace ResEvi.Data.DAO
             {
                 throw new Exception("Invalid ID in " + GetName() +": " + entity.ToString());
             }
+
             var foundEntity = await _context.Set<T>().FindAsync(entity.Id) ?? throw new EntityNotFoundException(GetName() + " not found");
             _context.Entry(foundEntity).CurrentValues.SetValues(entity);
             await _context.SaveChangesAsync();
