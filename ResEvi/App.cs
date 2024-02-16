@@ -1,6 +1,8 @@
-﻿namespace ResEvi
+﻿using ResEvi.Data;
+
+namespace ResEvi
 {
-    internal sealed class App
+    internal static class App
     {
         private static string? m_dataDirectory = null;
 
@@ -24,22 +26,30 @@
         /// <summary>
         /// Gets the full path of the archive directory root.
         /// </summary>
-        public static string ArchiveDirectory
-        {
-            get
-            {
-                return Path.Combine(DataDirectory, "Archive");
-            }
-        }
+        public static string ArchiveDirectory => Path.Combine(DataDirectory, "Archive");
 
         /// <summary>
         /// Gets the full path of the main SQLite database file.
         /// </summary>
-        public static string DatabaseFile
+        public static string DatabaseFile => Path.Combine(DataDirectory, "database.db");
+
+        /// <summary>
+        /// Executes the startup sequence for the application.
+        /// </summary
+        public static async Task StartupAsync()
         {
-            get
+            bool initialize_db = false;
+
+            if (!Directory.Exists(DataDirectory))
             {
-                return Path.Combine(DataDirectory, "database.db");
+                Directory.CreateDirectory(DataDirectory);
+                Directory.CreateDirectory(ArchiveDirectory);
+                initialize_db = true;
+            }
+
+            if (initialize_db || !File.Exists(DatabaseFile))
+            {
+                await DatabaseManager.InitializeDatabaseAsync();
             }
         }
     }

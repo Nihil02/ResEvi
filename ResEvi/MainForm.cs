@@ -6,5 +6,10 @@ namespace ResEvi
         {
             InitializeComponent();
         }
+
+        private async void MainForm_Load(object sender, EventArgs e)
+        {
+            await App.StartupAsync();
+        }
     }
 }
