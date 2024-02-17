@@ -4,7 +4,7 @@ namespace ResEvi
 {
     internal static class App
     {
-        private static string? m_dataDirectory = null;
+        private static string? s_dataDirectory = null;
 
         /// <summary>
         /// Gets the full path of the application's data directory.
@@ -13,13 +13,13 @@ namespace ResEvi
         {
             get
             {
-                if (m_dataDirectory == null)
+                if (s_dataDirectory == null)
                 {
                     string directory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-                    m_dataDirectory = Path.Combine(directory, "ITCM");
+                    s_dataDirectory = Path.Combine(directory, "ITCM");
                 }
 
-                return m_dataDirectory;
+                return s_dataDirectory;
             }
         }
 
