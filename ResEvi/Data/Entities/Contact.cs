@@ -11,8 +11,8 @@
 
     internal enum ContactType
     {
-        Other,
+        Otro,
         Email,
-        Telephone,
+        Telefono,
     }
 }

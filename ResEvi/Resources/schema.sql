@@ -1,5 +1,5 @@
 --
--- File generated with SQLiteStudio v3.4.4 on vie. feb. 16 17:36:57 2024
+-- File generated with SQLiteStudio v3.4.4 on vie. feb. 16 19:43:03 2024
 --
 -- Text encoding used: UTF-8
 --
@@ -24,8 +24,7 @@ STRICT;
 CREATE TABLE IF NOT EXISTS company (
     id       INTEGER PRIMARY KEY
                      NOT NULL,
-    name     TEXT    UNIQUE
-                     NOT NULL,
+    name     TEXT    NOT NULL,
     rfc      TEXT    UNIQUE
                      NOT NULL,
     type     TEXT    NOT NULL,
@@ -65,8 +64,8 @@ CREATE TABLE IF NOT EXISTS itcm_career (
 STRICT;
 
 
--- Table: itcm_file
-CREATE TABLE IF NOT EXISTS itcm_file (
+-- Table: itcm_document
+CREATE TABLE IF NOT EXISTS itcm_document (
     id         INTEGER PRIMARY KEY
                        NOT NULL,
     student_id INTEGER REFERENCES itcm_student (id) ON DELETE CASCADE
@@ -98,7 +97,7 @@ CREATE TABLE IF NOT EXISTS itcm_student (
     email         TEXT    NOT NULL,
     specialty_id  INTEGER REFERENCES itcm_specialty (id) ON DELETE RESTRICT
                           NOT NULL,
-    gender        INT     NOT NULL,
+    gender        TEXT    NOT NULL,
     semester      TEXT    NOT NULL,
     register_date TEXT    NOT NULL,
     start_date    TEXT    NOT NULL,
@@ -133,7 +132,7 @@ CREATE INDEX IF NOT EXISTS ix_contact_adviser_id_type ON contact (
 
 
 -- Index: ix_file_lookup
-CREATE INDEX IF NOT EXISTS ix_file_lookup ON itcm_file (
+CREATE INDEX IF NOT EXISTS ix_file_lookup ON itcm_document (
     student_id,
     type
 );

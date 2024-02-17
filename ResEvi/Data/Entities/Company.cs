@@ -7,7 +7,7 @@
         public string Rfc { get; set; } = "";
         public CompanyType Type { get; set; }
         public string Address { get; set; } = "";
-        public int PostCode { get; set; }
+        public int Postcode { get; set; }
         public string Locality { get; set; } = "";
         public string City { get; set; } = "";
         public string Region { get; set; } = "";
@@ -18,8 +18,8 @@
 
     internal enum CompanyType
     {
-        Public,
-        Private,
+        Publica,
+        Privada,
         Industrial,
     }
 }
