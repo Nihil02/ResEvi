@@ -1,14 +1,18 @@
-﻿using ResEvi.Contracts;
-
-namespace ResEvi.Data.Entities
+﻿namespace ResEvi.Data.Entities
 {
-    internal sealed class Contact : IEntity
+    internal sealed class Contact
     {
         public long Id { get; set; }
-        public long CompanyId { get; set; }
-        public Company Company { get; set; }
-        public string Phone { get; set; }
-        public string Extension { get; set; }
-        public string Email { get; set; }
+        public Adviser Adviser { get; set; } = new Adviser();
+        public ContactType Type { get; set; }
+        public string Value { get; set; } = "";
+        public string Extra { get; set; } = "";
+    }
+
+    internal enum ContactType
+    {
+        Other,
+        Email,
+        Telephone,
     }
 }

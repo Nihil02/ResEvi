@@ -1,20 +1,25 @@
-﻿using System.Collections.Generic;
-using ResEvi.Contracts;
-
-namespace ResEvi.Data.Entities
+﻿namespace ResEvi.Data.Entities
 {
-    internal sealed class Company : IEntity
+    internal sealed class Company
     {
         public long Id { get; set; }
-        public string Name { get; set; }
-        public Sector Sector { get; set; }
-        public string RFC { get; set; }
-        public string Street { get; set; }
-        public string PostalCode { get; set; }
-        public string City { get; set; }
-        public string Country { get; set; }
-        public IList<Contact> Contacts { get; set; }
-        public IList<Advisor> Advisors { get; set; }
-        public IList<Project> Projects { get; set; }
+        public string Name { get; set; } = "";
+        public string Rfc { get; set; } = "";
+        public CompanyType Type { get; set; }
+        public string Address { get; set; } = "";
+        public int PostCode { get; set; }
+        public string Locality { get; set; } = "";
+        public string City { get; set; } = "";
+        public string Region { get; set; } = "";
+        public string Country { get; set; } = "";
+        public string? Email { get; set; }
+        public string? Phone { get; set; }
+    }
+
+    internal enum CompanyType
+    {
+        Public,
+        Private,
+        Industrial,
     }
 }
