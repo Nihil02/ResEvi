@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ResEvi.Properties {
+namespace ResEvi.Data.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ResEvi.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ResEvi.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ResEvi.Data.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -62,15 +62,15 @@ namespace ResEvi.Properties {
         
         /// <summary>
         ///   Busca una cadena traducida similar a --
-        ///-- File generated with SQLiteStudio v3.4.4 on vie. feb. 16 12:06:15 2024
+        ///-- File generated with SQLiteStudio v3.4.4 on vie. feb. 16 19:43:03 2024
         ///--
         ///-- Text encoding used: UTF-8
         ///--
         ///PRAGMA foreign_keys = off;
         ///BEGIN TRANSACTION;
         ///
-        ///-- Table: advisor
-        ///CREATE TABLE IF NOT EXISTS advisor (
+        ///-- Table: adviser
+        ///CREATE TABLE IF NOT EXISTS adviser (
         ///    id         INTEGER PRIMARY KEY
         ///                       NOT NULL,
         ///    company_id INTEGER REFERENCES company (id) ON DELETE RESTRICT
@@ -78,7 +78,7 @@ namespace ResEvi.Properties {
         ///    department TEXT    NOT NULL,
         ///    type       TEXT    NOT NULL,
         ///    name       TEXT    NOT NULL,
-        ///    email      T [resto de la cadena truncado]&quot;;.
+        ///    role       T [resto de la cadena truncado]&quot;;.
         /// </summary>
         internal static string DatabaseSchema {
             get {
